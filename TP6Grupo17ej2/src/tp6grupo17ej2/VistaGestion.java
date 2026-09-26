@@ -4,6 +4,8 @@
  */
 package tp6grupo17ej2;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,7 +47,6 @@ public class VistaGestion extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         comboBoxCategoria = new javax.swing.JComboBox<>();
         txtStock = new javax.swing.JTextField();
-        btnBuscarProducto = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         btnNuevoProducto = new javax.swing.JButton();
         btnGuardarCambio = new javax.swing.JButton();
@@ -151,9 +152,6 @@ public class VistaGestion extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        btnBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-magnifying-glass-tilted-right-48.png"))); // NOI18N
-        btnBuscarProducto.addActionListener(this::btnBuscarProductoActionPerformed);
-
         btnCerrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(this::btnCerrarActionPerformed);
@@ -180,7 +178,6 @@ public class VistaGestion extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(comboBoxFiltro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnCerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnNuevoProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnGuardarCambio, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -210,20 +207,19 @@ public class VistaGestion extends javax.swing.JInternalFrame {
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(btnBuscarProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                                .addGap(38, 38, 38)
+                                                .addComponent(btnCerrar))))
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(41, 41, 41)))))
+                                        .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)))
+                                .addGap(21, 21, 21)))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -231,30 +227,29 @@ public class VistaGestion extends javax.swing.JInternalFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnCerrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnBorrarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarCambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnNuevoProducto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnBorrarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGuardarCambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnNuevoProducto))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCerrar)
+                        .addGap(141, 141, 141))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -305,16 +300,13 @@ public class VistaGestion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxCategoriaItemStateChanged
 
-    private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
-       this.dispose();
-    }//GEN-LAST:event_btnBuscarProductoActionPerformed
-
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        // TODO add your handling code here:
+       this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProductoActionPerformed
-        if (txtNombre.getText().isEmpty() && txtCodigo.getText().isEmpty() && txtPrecio.getText().isEmpty() && txtStock.getText().isEmpty()) {
+       DefaultTableModel modelo = (DefaultTableModel) tablaDatos.getModel();
+        if (txtNombre.getText().isEmpty() || txtCodigo.getText().isEmpty() || txtPrecio.getText().isEmpty() || txtStock.getText().isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Complete todos los campos");
             return;
         }
@@ -324,14 +316,19 @@ public class VistaGestion extends javax.swing.JInternalFrame {
        double precio = Double.parseDouble(txtPrecio.getText());
        String categoria = comboBoxCategoria.getSelectedItem().toString();
        int stock = Integer.parseInt(txtStock.getText());
-       
+       String filtro = comboBoxFiltro.getSelectedItem().toString();
        Producto producto = new Producto(codigo,nombre,precio,categoria,stock);
-       lblMensaje.setText("Producto de codigo:"+codigo+ "agregado con Exito");
+       lblMensaje.setText("Producto de codigo: "+codigo+ " agregado con Exito");
        VistaPrincipal.getProductos().add(producto);
        txtCodigo.setText("");
        txtNombre.setText("");
        txtPrecio.setText("");
        txtStock.setText("");
+       
+            if (filtro.equals(categoria)) {
+                Object[] fila = {codigo,nombre,precio,categoria,stock};
+                modelo.addRow(fila);
+            }
       }
       catch(NumberFormatException e){
       javax.swing.JOptionPane.showMessageDialog(null, "En los campos codigo y precio tiene que ir un numero");
@@ -339,11 +336,57 @@ public class VistaGestion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNuevoProductoActionPerformed
 
     private void btnGuardarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambioActionPerformed
-        // TODO add your handling code here:
+     
+        if (txtNombre.getText().isEmpty() || txtCodigo.getText().isEmpty() || txtPrecio.getText().isEmpty() || txtStock.getText().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Complete todos los campos");
+            return;
+        }
+     
+     try{
+      Set<Producto> auxiliar = new HashSet<>(VistaPrincipal.getProductos());
+      
+      Long codigo = Long.parseLong(txtCodigo.getText());
+      for (Producto producto : auxiliar) {
+            
+          if (codigo.equals(producto.getCodigo())) {
+              
+       String nombre = txtNombre.getText();
+       double precio = Double.parseDouble(txtPrecio.getText());
+       String categoria = comboBoxCategoria.getSelectedItem().toString();
+       int stock = Integer.parseInt(txtStock.getText());
+       Producto productoActualizado = new Producto(codigo,nombre,precio,categoria,stock);
+       VistaPrincipal.getProductos().remove(producto);
+       VistaPrincipal.getProductos().add(productoActualizado);
+       
+       lblMensaje.setText("Producto de codigo: "+codigo+" actualizado con exito");
+             }
+              
+         }
+      
+       
+     }
+     catch(NumberFormatException e){
+     javax.swing.JOptionPane.showMessageDialog(null, "Tiene que colocar Campos Validos");
+     }
     }//GEN-LAST:event_btnGuardarCambioActionPerformed
 
     private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
-        
+         DefaultTableModel modelo = (DefaultTableModel) tablaDatos.getModel();
+          int filaSeleccionada = tablaDatos.getSelectedRow();
+           if (filaSeleccionada==-1) {
+               javax.swing.JOptionPane.showMessageDialog(null, "Antes de apretar el boton debe seleccionar una fila para borrar");
+            return;
+        }
+           Set<Producto> copiaAuxiliar = new HashSet<>(VistaPrincipal.getProductos());
+           
+           txtCodigo.setText(modelo.getValueAt(filaSeleccionada, 0).toString());
+           for (Producto producto : copiaAuxiliar) {
+               if (producto.getCodigo().equals(modelo.getValueAt(filaSeleccionada, 0))) {
+                    VistaPrincipal.getProductos().remove(producto);
+                    modelo.removeRow(filaSeleccionada);
+               }
+        }
+          
     }//GEN-LAST:event_btnBorrarProductoActionPerformed
 
     private void comboBoxFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFiltroActionPerformed
@@ -356,11 +399,11 @@ public class VistaGestion extends javax.swing.JInternalFrame {
         if (filaSeleccionada==-1) {
             return;
         }
-        txtNombre.setText(modelo.getValueAt(filaSeleccionada, 0).toString());
-        txtCodigo.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
-        txtPrecio.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
-        txtStock.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
-        comboBoxCategoria.setSelectedItem(modelo.getValueAt(filaSeleccionada, 1).toString());
+        txtNombre.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
+        txtCodigo.setText(modelo.getValueAt(filaSeleccionada, 0).toString());
+        txtPrecio.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
+        txtStock.setText(modelo.getValueAt(filaSeleccionada, 4).toString());
+        comboBoxCategoria.setSelectedItem(modelo.getValueAt(filaSeleccionada, 3).toString());
        
         
     }//GEN-LAST:event_tablaDatosMouseReleased
@@ -368,7 +411,6 @@ public class VistaGestion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarProducto;
-    private javax.swing.JButton btnBuscarProducto;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardarCambio;
     private javax.swing.JButton btnNuevoProducto;

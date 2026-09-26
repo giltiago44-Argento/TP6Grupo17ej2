@@ -9,11 +9,11 @@ package tp6grupo17ej2;
  * @author Agos
  */
 public class Producto {
-    Long codigo;
-    String nombre;
-    double precio;
-    String rubro;
-    int stock;
+    private Long codigo;
+    private String nombre;
+    private double precio;
+    private String rubro;
+    private int stock;
 
     public Producto(Long codigo, String nombre, double precio, String rubro, int stock) {
         this.codigo = codigo;
@@ -43,7 +43,7 @@ public class Producto {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
