@@ -11,11 +11,11 @@ package tp6grupo17ej2;
 public class Producto {
     Long codigo;
     String nombre;
-    float precio;
+    double precio;
     String rubro;
     int stock;
 
-    public Producto(Long codigo, String nombre, float precio, String rubro, int stock) {
+    public Producto(Long codigo, String nombre, double precio, String rubro, int stock) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
@@ -32,14 +32,14 @@ public class Producto {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return nombre;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String nombre) {
+        this.nombre = nombre;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
