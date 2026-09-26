@@ -179,7 +179,7 @@ public class VistaConsultaPorPrecio extends javax.swing.JInternalFrame {
          double precioMax = Double.parseDouble(txtPrecioMaximo.getText());
          
          for (Producto producto : VistaPrincipal.getProductos()) {
-             if (producto.getPrecio()<precioMax && producto.getPrecio()>precioMin) {
+             if (producto.getPrecio()<=precioMax && producto.getPrecio()>=precioMin) {
                   Object[] fila = {producto.getCodigo(),producto.getDescripcion(),producto.getPrecio(),producto.getRubro(),producto.getStock()};
             modelo.addRow(fila);
              }
